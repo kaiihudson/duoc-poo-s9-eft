@@ -15,6 +15,13 @@ public class Rut {
         }
     }
 
+    /**
+     * Validar rut.
+     *
+     * @param numeros the numeros
+     * @param dv      the dv
+     * @return the boolean result indicating if the given dv matches the dv the rut is meant to have
+     */
     public boolean validarRut(String numeros, String dv) {
         boolean validacion = false;
         try {
