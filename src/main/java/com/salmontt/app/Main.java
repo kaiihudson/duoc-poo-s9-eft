@@ -5,7 +5,6 @@ import com.salmontt.model.OC.OrdenCompra;
 import com.salmontt.model.OC.Producto;
 import com.salmontt.model.persona.Rut;
 import com.salmontt.model.persona.Tarjeta;
-import com.salmontt.utils.common.Importer;
 import com.salmontt.utils.exceptions.InvalidRutException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

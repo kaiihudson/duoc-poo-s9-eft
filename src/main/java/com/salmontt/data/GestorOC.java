@@ -2,7 +2,6 @@ package com.salmontt.data;
 
 import com.salmontt.model.OC.OrdenCompra;
 import com.salmontt.model.OC.Producto;
-import com.salmontt.model.persona.Persona;
 import com.salmontt.utils.common.Importer;
 
 import java.util.ArrayList;

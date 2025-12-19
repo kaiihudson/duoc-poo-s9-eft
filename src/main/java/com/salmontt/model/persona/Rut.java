@@ -3,8 +3,8 @@ package com.salmontt.model.persona;
 import com.salmontt.utils.exceptions.InvalidRutException;
 
 public class Rut {
-    private String numeros;
-    private String dv;
+    private final String numeros;
+    private final String dv;
 
     public Rut(String numeros, String dv) {
         this.numeros = numeros;

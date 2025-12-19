@@ -6,7 +6,7 @@ public class Tarjeta {
     private String numeroTarjeta;
     private String vencimiento;
     private String cvv;
-    private Persona persona;
+    private final Persona persona;
 
     public Tarjeta(String numeroTarjeta, String vencimiento, String cvv, Persona persona) {
         if (validatePersonType(persona)) {
@@ -29,6 +29,18 @@ public class Tarjeta {
 
     public String getCvv() {
         return cvv;
+    }
+
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
+    }
+
+    public void setVencimiento(String vencimiento) {
+        this.vencimiento = vencimiento;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
 
     public Persona getPersona() {

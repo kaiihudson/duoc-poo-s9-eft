@@ -1,7 +1,5 @@
 package com.salmontt.model.persona;
 
-import com.salmontt.model.common.RegistroContable;
-
 import java.util.UUID;
 
 public class Empleado extends Persona {

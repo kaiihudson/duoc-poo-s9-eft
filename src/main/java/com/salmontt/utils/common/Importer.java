@@ -30,23 +30,15 @@ public class Importer {
 
     public List<Persona> importPersonasFromPlainText(String filePath){
         List<Persona> importedData = new ArrayList<>();
-        int counter = 0;
         try (Scanner reader = new Scanner(loadTxtFile(filePath))) {
             while (reader.hasNextLine()) {
-                counter++;
                 String data = reader.nextLine();
                 String[] dataParts = data.split(",");
                 if(dataParts.length >= 2){
                     switch (dataParts.length) {
                         case 6:
                             try {
-                                Cliente cliente = new Cliente();
-                                cliente.setNombre(dataParts[0]);
-                                cliente.setApellido(dataParts[1]);
-                                String[] rutParts =  dataParts[2].toLowerCase().replaceAll("\\.", "").split("-");
-                                cliente.setRut(new Rut(rutParts[0], rutParts[1]));
-                                Direccion direccion = new Direccion(dataParts[3], dataParts[4], dataParts[5]);
-                                cliente.setDireccion(direccion);
+                                Cliente cliente = createClient(dataParts);
                                 importedData.add(cliente);
                             } catch (InvalidRutException e){
                                 log.error("Invalid rut");
@@ -54,15 +46,7 @@ public class Importer {
                             break;
                         case 8:
                             try {
-                                Empleado empleado = new Empleado();
-                                empleado.setNombre(dataParts[0]);
-                                empleado.setApellido(dataParts[1]);
-                                String[] rutParts =  dataParts[2].toLowerCase().replaceAll("\\.", "").split("-");
-                                empleado.setRut(new Rut(rutParts[0], rutParts[1]));
-                                Direccion direccion = new Direccion(dataParts[3], dataParts[4], dataParts[5]);
-                                empleado.setDireccion(direccion);
-                                empleado.setSueldo(validateInteger(dataParts[6]));
-                                empleado.setFechaContratacion(dataParts[7]);
+                                Empleado empleado = createEmpleado(dataParts);
                                 importedData.add(empleado);
                             } catch (InvalidRutException e){
                                 log.error("Invalid rut");
@@ -72,16 +56,7 @@ public class Importer {
                             break;
                         case 9:
                             try {
-                                Proveedor proveedor = new Proveedor();
-                                proveedor.setNombre(dataParts[0]);
-                                proveedor.setApellido(dataParts[1]);
-                                String[] rutParts =  dataParts[2].toLowerCase().replaceAll("\\.", "").split("-");
-                                proveedor.setRut(new Rut(rutParts[0], rutParts[1]));
-                                Direccion direccion = new Direccion(dataParts[3], dataParts[4], dataParts[5]);
-                                proveedor.setDireccion(direccion);
-                                proveedor.setFechaContratacion(dataParts[6]);
-                                proveedor.setCompania(dataParts[7]);
-                                proveedor.setUFContrato(validateInteger(dataParts[8]));
+                                Proveedor proveedor = createProveedor(dataParts);
                                 importedData.add(proveedor);
                             } catch (InvalidRutException e){
                                 log.error("Invalid rut");
@@ -102,12 +77,48 @@ public class Importer {
         }        return importedData;
     }
 
+    private static Proveedor createProveedor(String[] dataParts) {
+        Proveedor proveedor = new Proveedor();
+        proveedor.setNombre(dataParts[0]);
+        proveedor.setApellido(dataParts[1]);
+        String[] rutParts =  dataParts[2].toLowerCase().replaceAll("\\.", "").split("-");
+        proveedor.setRut(new Rut(rutParts[0], rutParts[1]));
+        Direccion direccion = new Direccion(dataParts[3], dataParts[4], dataParts[5]);
+        proveedor.setDireccion(direccion);
+        proveedor.setFechaContratacion(dataParts[6]);
+        proveedor.setCompania(dataParts[7]);
+        proveedor.setUFContrato(validateInteger(dataParts[8]));
+        return proveedor;
+    }
+
+    private static Empleado createEmpleado(String[] dataParts) {
+        Empleado empleado = new Empleado();
+        empleado.setNombre(dataParts[0]);
+        empleado.setApellido(dataParts[1]);
+        String[] rutParts =  dataParts[2].toLowerCase().replaceAll("\\.", "").split("-");
+        empleado.setRut(new Rut(rutParts[0], rutParts[1]));
+        Direccion direccion = new Direccion(dataParts[3], dataParts[4], dataParts[5]);
+        empleado.setDireccion(direccion);
+        empleado.setSueldo(validateInteger(dataParts[6]));
+        empleado.setFechaContratacion(dataParts[7]);
+        return empleado;
+    }
+
+    private static Cliente createClient(String[] dataParts) {
+        Cliente cliente = new Cliente();
+        cliente.setNombre(dataParts[0]);
+        cliente.setApellido(dataParts[1]);
+        String[] rutParts =  dataParts[2].toLowerCase().replaceAll("\\.", "").split("-");
+        cliente.setRut(new Rut(rutParts[0], rutParts[1]));
+        Direccion direccion = new Direccion(dataParts[3], dataParts[4], dataParts[5]);
+        cliente.setDireccion(direccion);
+        return cliente;
+    }
+
     public List<Producto> importProductosFromPlainText(String filePath){
         List<Producto> importedData = new ArrayList<>();
-        int counter = 0;
         try (Scanner reader = new Scanner(loadTxtFile(filePath))) {
             while (reader.hasNextLine()) {
-                counter++;
                 String data = reader.nextLine();
                 String[] dataParts = data.split(",");
                 if(dataParts.length == 2){

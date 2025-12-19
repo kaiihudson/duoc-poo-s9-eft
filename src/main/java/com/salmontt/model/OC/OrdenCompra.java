@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class OrdenCompra {
-    private UUID id;
-    private Tarjeta tarjeta;
+    private final UUID id;
+    private final Tarjeta tarjeta;
     private List<Producto> productos = new ArrayList<>();
 
     public OrdenCompra(Tarjeta tarjeta, List<Producto> productos) {
