@@ -22,16 +22,17 @@ herramientas que permitan reutilizar estructuras o automatizar flujos simples.
 personas (empleados, clientes, proveedores), lo que genera ambigüedad en los
 procesos de registro y seguimiento.
 - Ausencia de modularidad: al no contar con un sistema orientado a clases, cualquier
-cambio en una parte del sistema afecta el resto, generando errores y retrabajo.
-
+cambio en una parte del sistema afecta el resto, generando errores y retrabajo
 La empresa desea contar con una solución flexible, escalable y estructurada, que
 represente el dominio real de sus operaciones, utilizando los principios fundamentales de la
 programación orientada a objetos: encapsulamiento, visibilidad, composición,
 colecciones reutilizables, herencia, polimorfismo e interfaces.
+
 El nuevo sistema debe permitir modelar las entidades claves del dominio (personas,
 direcciones, productos, órdenes), organizar la información en paquetes bien estructurados,
 cargar datos desde archivos externos, aplicar buenas prácticas de diseño y ofrecer una base
 sólida sobre la cual escalar nuevas funcionalidades en versiones futuras.
+
 ---
 ## Estructura de Carpetas
 ```
